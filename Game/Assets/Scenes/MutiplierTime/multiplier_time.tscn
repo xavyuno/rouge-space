@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhrxwq25agkmx"]
+
+[ext_resource type="Script" uid="uid://bldtv6qrr32sv" path="res://Game/Assets/Scenes/MutiplierTime/multiplier_time.gd" id="1_t72qh"]
+
+[node name="MultiplierTime" type="Timer"]
+autostart = true
+script = ExtResource("1_t72qh")
+
+[connection signal="timeout" from="." to="." method="_on_timeout"]

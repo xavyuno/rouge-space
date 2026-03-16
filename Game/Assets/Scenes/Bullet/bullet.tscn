@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://3eslvbpc4fyw"]
+
+[ext_resource type="Script" uid="uid://qdavg2xuvvi8" path="res://Game/Assets/Scenes/Bullet/bullet.gd" id="1_w2rji"]
+[ext_resource type="PackedScene" uid="uid://cvxyofa6tnq8r" path="res://Game/Assets/Scenes/Despawn/despawn.tscn" id="2_er06g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u4wlu"]
+size = Vector2(8, 8)
+
+[node name="Bullet" type="StaticBody2D" groups=["Bullet"]]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_w2rji")
+
+[node name="Icon" type="Polygon2D" parent="."]
+position = Vector2(-4, 4)
+scale = Vector2(0.25, 0.25)
+color = Color(1, 0, 0, 1)
+polygon = PackedVector2Array(0, -32, 0, 0, 32, 0, 32, -32)
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_u4wlu")
+
+[node name="Despawn" parent="." instance=ExtResource("2_er06g")]

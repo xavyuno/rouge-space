@@ -1,0 +1,390 @@
+[gd_scene load_steps=7 format=3 uid="uid://xxdwchgvrsur"]
+
+[ext_resource type="Script" uid="uid://b1mxdy3ehwuc5" path="res://Game/Assets/Scenes/Player/player.gd" id="1_wh045"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i37ix"]
+size = Vector2(64, 64)
+
+[sub_resource type="Animation" id="Animation_xw3pp"]
+resource_name = "Reload"
+step = 0.1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"Reload"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_110j0"]
+resource_name = "Shoot"
+step = 0.1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"Shoot"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1dyyp"]
+_data = {
+&"Reload": SubResource("Animation_xw3pp"),
+&"Shoot": SubResource("Animation_110j0")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mq581"]
+size = Vector2(60, 60)
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+motion_mode = 1
+platform_wall_layers = 255
+script = ExtResource("1_wh045")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_i37ix")
+
+[node name="Body" type="Polygon2D" parent="."]
+color = Color(0.458717, 0.78125, 0.238037, 1)
+polygon = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_1dyyp")
+}
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="Collision" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("RectangleShape2D_mq581")
+
+[node name="Guns" type="Node2D" parent="."]
+
+[node name="Gun1" type="Polygon2D" parent="Guns"]
+color = Color(0.175514, 0.3125, 0.0817871, 1)
+polygon = PackedVector2Array(0, -8, 64, -8, 64, -1.84218, 64, 9, 0, 9)
+
+[node name="Marker" type="Marker2D" parent="Guns/Gun1"]
+position = Vector2(64, 0)
+
+[node name="Aim" type="Polygon2D" parent="Guns/Gun1"]
+visible = false
+color = Color(1, 0, 0, 0.392157)
+polygon = PackedVector2Array(64, -1, 64, 1, 1500, 1, 1500, -1)
+
+[node name="Gun2" type="Polygon2D" parent="Guns"]
+visible = false
+rotation = -0.261799
+color = Color(0.175514, 0.3125, 0.0817871, 1)
+polygon = PackedVector2Array(0, -8, 64, -8, 64, 9, 0, 9)
+
+[node name="Marker" type="Marker2D" parent="Guns/Gun2"]
+position = Vector2(64, 0)
+
+[node name="Aim" type="Polygon2D" parent="Guns/Gun2"]
+color = Color(1, 0, 0, 0.392157)
+polygon = PackedVector2Array(64, -1, 64, 1, 1500, 1, 1500, -1)
+
+[node name="Gun3" type="Polygon2D" parent="Guns"]
+visible = false
+rotation = -0.523598
+color = Color(0.175514, 0.3125, 0.0817871, 1)
+polygon = PackedVector2Array(0, -8, 64, -8, 64, 9, 0, 9)
+
+[node name="Marker" type="Marker2D" parent="Guns/Gun3"]
+position = Vector2(64, 0)
+
+[node name="Aim" type="Polygon2D" parent="Guns/Gun3"]
+color = Color(1, 0, 0, 0.392157)
+polygon = PackedVector2Array(64, -1, 64, 1, 1500, 1, 1500, -1)
+
+[node name="Gun4" type="Polygon2D" parent="Guns"]
+visible = false
+rotation = -0.785397
+color = Color(0.175514, 0.3125, 0.0817871, 1)
+polygon = PackedVector2Array(0, -8, 64, -8, 64, 9, 0, 9)
+
+[node name="Marker" type="Marker2D" parent="Guns/Gun4"]
+position = Vector2(64, 0)
+
+[node name="Aim" type="Polygon2D" parent="Guns/Gun4"]
+color = Color(1, 0, 0, 0.392157)
+polygon = PackedVector2Array(64, -1, 64, 1, 1500, 1, 1500, -1)
+
+[node name="Gun5" type="Polygon2D" parent="Guns"]
+visible = false
+rotation = -1.0472
+color = Color(0.175514, 0.3125, 0.0817871, 1)
+polygon = PackedVector2Array(0, -8, 64, -8, 64, 9, 0, 9)
+
+[node name="Marker" type="Marker2D" parent="Guns/Gun5"]
+position = Vector2(64, 0)
+
+[node name="Aim" type="Polygon2D" parent="Guns/Gun5"]
+color = Color(1, 0, 0, 0.392157)
+polygon = PackedVector2Array(64, -1, 64, 1, 1500, 1, 1500, -1)
+
+[node name="Gun6" type="Polygon2D" parent="Guns"]
+visible = false
+rotation = -1.309
+color = Color(0.175514, 0.3125, 0.0817871, 1)
+polygon = PackedVector2Array(0, -8, 64, -8, 64, 9, 0, 9)
+
+[node name="Marker" type="Marker2D" parent="Guns/Gun6"]
+position = Vector2(64, 0)
+
+[node name="Aim" type="Polygon2D" parent="Guns/Gun6"]
+color = Color(1, 0, 0, 0.392157)
+polygon = PackedVector2Array(64, -1, 64, 1, 1500, 1, 1500, -1)
+
+[node name="Gun7" type="Polygon2D" parent="Guns"]
+visible = false
+rotation = -1.57079
+color = Color(0.175514, 0.3125, 0.0817871, 1)
+polygon = PackedVector2Array(0, -8, 64, -8, 64, 9, 0, 9)
+
+[node name="Marker" type="Marker2D" parent="Guns/Gun7"]
+position = Vector2(64, 0)
+
+[node name="Aim" type="Polygon2D" parent="Guns/Gun7"]
+color = Color(1, 0, 0, 0.392157)
+polygon = PackedVector2Array(64, -1, 64, 1, 1500, 1, 1500, -1)
+
+[node name="Gun8" type="Polygon2D" parent="Guns"]
+visible = false
+rotation = -1.83259
+color = Color(0.175514, 0.3125, 0.0817871, 1)
+polygon = PackedVector2Array(0, -8, 64, -8, 64, 9, 0, 9)
+
+[node name="Marker" type="Marker2D" parent="Guns/Gun8"]
+position = Vector2(64, 0)
+
+[node name="Aim" type="Polygon2D" parent="Guns/Gun8"]
+color = Color(1, 0, 0, 0.392157)
+polygon = PackedVector2Array(64, -1, 64, 1, 1500, 1, 1500, -1)
+
+[node name="Gun9" type="Polygon2D" parent="Guns"]
+visible = false
+rotation = -2.09439
+color = Color(0.175514, 0.3125, 0.0817871, 1)
+polygon = PackedVector2Array(0, -8, 64, -8, 64, 9, 0, 9)
+
+[node name="Marker" type="Marker2D" parent="Guns/Gun9"]
+position = Vector2(64, 0)
+
+[node name="Aim" type="Polygon2D" parent="Guns/Gun9"]
+color = Color(1, 0, 0, 0.392157)
+polygon = PackedVector2Array(64, -1, 64, 1, 1500, 1, 1500, -1)
+
+[node name="Gun10" type="Polygon2D" parent="Guns"]
+visible = false
+rotation = -2.35619
+color = Color(0.175514, 0.3125, 0.0817871, 1)
+polygon = PackedVector2Array(0, -8, 64, -8, 64, 9, 0, 9)
+
+[node name="Marker" type="Marker2D" parent="Guns/Gun10"]
+position = Vector2(64, 0)
+
+[node name="Aim" type="Polygon2D" parent="Guns/Gun10"]
+color = Color(1, 0, 0, 0.392157)
+polygon = PackedVector2Array(64, -1, 64, 1, 1500, 1, 1500, -1)
+
+[node name="Gun11" type="Polygon2D" parent="Guns"]
+visible = false
+rotation = -2.61799
+color = Color(0.175514, 0.3125, 0.0817871, 1)
+polygon = PackedVector2Array(0, -8, 64, -8, 64, 9, 0, 9)
+
+[node name="Marker" type="Marker2D" parent="Guns/Gun11"]
+position = Vector2(64, 0)
+
+[node name="Aim" type="Polygon2D" parent="Guns/Gun11"]
+color = Color(1, 0, 0, 0.392157)
+polygon = PackedVector2Array(64, -1, 64, 1, 1500, 1, 1500, -1)
+
+[node name="Gun12" type="Polygon2D" parent="Guns"]
+visible = false
+rotation = -2.87979
+color = Color(0.175514, 0.3125, 0.0817871, 1)
+polygon = PackedVector2Array(0, -8, 64, -8, 64, 9, 0, 9)
+
+[node name="Marker" type="Marker2D" parent="Guns/Gun12"]
+position = Vector2(64, 0)
+
+[node name="Aim" type="Polygon2D" parent="Guns/Gun12"]
+color = Color(1, 0, 0, 0.392157)
+polygon = PackedVector2Array(64, -1, 64, 1, 1500, 1, 1500, -1)
+
+[node name="Gun13" type="Polygon2D" parent="Guns"]
+visible = false
+rotation = -3.14159
+color = Color(0.175514, 0.3125, 0.0817871, 1)
+polygon = PackedVector2Array(0, -8, 64, -8, 64, 9, 0, 9)
+
+[node name="Marker" type="Marker2D" parent="Guns/Gun13"]
+position = Vector2(64, 0)
+
+[node name="Aim" type="Polygon2D" parent="Guns/Gun13"]
+color = Color(1, 0, 0, 0.392157)
+polygon = PackedVector2Array(64, -1, 64, 1, 1500, 1, 1500, -1)
+
+[node name="Gun14" type="Polygon2D" parent="Guns"]
+visible = false
+rotation = 2.8798
+color = Color(0.175514, 0.3125, 0.0817871, 1)
+polygon = PackedVector2Array(0, -8, 64, -8, 64, 9, 0, 9)
+
+[node name="Marker" type="Marker2D" parent="Guns/Gun14"]
+position = Vector2(64, 0)
+
+[node name="Aim" type="Polygon2D" parent="Guns/Gun14"]
+color = Color(1, 0, 0, 0.392157)
+polygon = PackedVector2Array(64, -1, 64, 1, 1500, 1, 1500, -1)
+
+[node name="Gun15" type="Polygon2D" parent="Guns"]
+visible = false
+rotation = 2.618
+color = Color(0.175514, 0.3125, 0.0817871, 1)
+polygon = PackedVector2Array(0, -8, 64, -8, 64, 9, 0, 9)
+
+[node name="Marker" type="Marker2D" parent="Guns/Gun15"]
+position = Vector2(64, 0)
+
+[node name="Aim" type="Polygon2D" parent="Guns/Gun15"]
+color = Color(1, 0, 0, 0.392157)
+polygon = PackedVector2Array(64, -1, 64, 1, 1500, 1, 1500, -1)
+
+[node name="Gun16" type="Polygon2D" parent="Guns"]
+visible = false
+rotation = 2.3562
+color = Color(0.175514, 0.3125, 0.0817871, 1)
+polygon = PackedVector2Array(0, -8, 64, -8, 64, 9, 0, 9)
+
+[node name="Marker" type="Marker2D" parent="Guns/Gun16"]
+position = Vector2(64, 0)
+
+[node name="Aim" type="Polygon2D" parent="Guns/Gun16"]
+color = Color(1, 0, 0, 0.392157)
+polygon = PackedVector2Array(64, -1, 64, 1, 1500, 1, 1500, -1)
+
+[node name="Gun17" type="Polygon2D" parent="Guns"]
+visible = false
+rotation = 2.0944
+color = Color(0.175514, 0.3125, 0.0817871, 1)
+polygon = PackedVector2Array(0, -8, 64, -8, 64, 9, 0, 9)
+
+[node name="Marker" type="Marker2D" parent="Guns/Gun17"]
+position = Vector2(64, 0)
+
+[node name="Aim" type="Polygon2D" parent="Guns/Gun17"]
+color = Color(1, 0, 0, 0.392157)
+polygon = PackedVector2Array(64, -1, 64, 1, 1500, 1, 1500, -1)
+
+[node name="Gun18" type="Polygon2D" parent="Guns"]
+visible = false
+rotation = 1.8326
+color = Color(0.175514, 0.3125, 0.0817871, 1)
+polygon = PackedVector2Array(0, -8, 64, -8, 64, 9, 0, 9)
+
+[node name="Marker" type="Marker2D" parent="Guns/Gun18"]
+position = Vector2(64, 0)
+
+[node name="Aim" type="Polygon2D" parent="Guns/Gun18"]
+color = Color(1, 0, 0, 0.392157)
+polygon = PackedVector2Array(64, -1, 64, 1, 1500, 1, 1500, -1)
+
+[node name="Gun19" type="Polygon2D" parent="Guns"]
+visible = false
+rotation = 1.5708
+color = Color(0.175514, 0.3125, 0.0817871, 1)
+polygon = PackedVector2Array(0, -8, 64, -8, 64, 9, 0, 9)
+
+[node name="Marker" type="Marker2D" parent="Guns/Gun19"]
+position = Vector2(64, 0)
+
+[node name="Aim" type="Polygon2D" parent="Guns/Gun19"]
+color = Color(1, 0, 0, 0.392157)
+polygon = PackedVector2Array(64, -1, 64, 1, 1500, 1, 1500, -1)
+
+[node name="Gun20" type="Polygon2D" parent="Guns"]
+visible = false
+rotation = 1.309
+color = Color(0.175514, 0.3125, 0.0817871, 1)
+polygon = PackedVector2Array(0, -8, 64, -8, 64, 9, 0, 9)
+
+[node name="Marker" type="Marker2D" parent="Guns/Gun20"]
+position = Vector2(64, 0)
+
+[node name="Aim" type="Polygon2D" parent="Guns/Gun20"]
+color = Color(1, 0, 0, 0.392157)
+polygon = PackedVector2Array(64, -1, 64, 1, 1500, 1, 1500, -1)
+
+[node name="Gun21" type="Polygon2D" parent="Guns"]
+visible = false
+rotation = 1.04721
+color = Color(0.175514, 0.3125, 0.0817871, 1)
+polygon = PackedVector2Array(0, -8, 64, -8, 64, 9, 0, 9)
+
+[node name="Marker" type="Marker2D" parent="Guns/Gun21"]
+position = Vector2(64, 0)
+
+[node name="Aim" type="Polygon2D" parent="Guns/Gun21"]
+color = Color(1, 0, 0, 0.392157)
+polygon = PackedVector2Array(64, -1, 64, 1, 1500, 1, 1500, -1)
+
+[node name="Gun22" type="Polygon2D" parent="Guns"]
+visible = false
+rotation = 0.785406
+color = Color(0.175514, 0.3125, 0.0817871, 1)
+polygon = PackedVector2Array(0, -8, 64, -8, 64, 9, 0, 9)
+
+[node name="Marker" type="Marker2D" parent="Guns/Gun22"]
+position = Vector2(64, 0)
+
+[node name="Aim" type="Polygon2D" parent="Guns/Gun22"]
+color = Color(1, 0, 0, 0.392157)
+polygon = PackedVector2Array(64, -1, 64, 1, 1500, 1, 1500, -1)
+
+[node name="Gun23" type="Polygon2D" parent="Guns"]
+visible = false
+rotation = 0.523607
+color = Color(0.175514, 0.3125, 0.0817871, 1)
+polygon = PackedVector2Array(0, -8, 64, -8, 64, 9, 0, 9)
+
+[node name="Marker" type="Marker2D" parent="Guns/Gun23"]
+position = Vector2(64, 0)
+
+[node name="Aim" type="Polygon2D" parent="Guns/Gun23"]
+color = Color(1, 0, 0, 0.392157)
+polygon = PackedVector2Array(64, -1, 64, 1, 1500, 1, 1500, -1)
+
+[node name="Gun24" type="Polygon2D" parent="Guns"]
+visible = false
+rotation = 0.261808
+color = Color(0.175514, 0.3125, 0.0817871, 1)
+polygon = PackedVector2Array(0, -8, 64, -8, 64, 9, 0, 9)
+
+[node name="Marker" type="Marker2D" parent="Guns/Gun24"]
+position = Vector2(64, 0)
+
+[node name="Aim" type="Polygon2D" parent="Guns/Gun24"]
+color = Color(1, 0, 0, 0.392157)
+polygon = PackedVector2Array(64, -1, 64, 1, 1500, 1, 1500, -1)
+
+[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]

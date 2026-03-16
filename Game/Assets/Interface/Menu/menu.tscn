@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://cklj7uefn5og8"]
+
+[ext_resource type="Script" uid="uid://c8laghoq1p4ku" path="res://Game/Assets/Interface/Menu/multiplayer.gd" id="1_v26lo"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_v26lo")
+
+[node name="BG" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Singleplayer" type="Button" parent="."]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 192.0
+offset_right = 768.0
+offset_bottom = 256.0
+text = "Play"
+
+[connection signal="pressed" from="Singleplayer" to="." method="_on_singleplayer_pressed"]

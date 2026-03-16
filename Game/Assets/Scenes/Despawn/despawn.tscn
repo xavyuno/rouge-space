@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvxyofa6tnq8r"]
+
+[ext_resource type="Script" uid="uid://1gyw8kgf5sk6" path="res://Game/Assets/Scenes/Despawn/despawn.gd" id="1_2q38i"]
+
+[node name="Despawn" type="Timer"]
+wait_time = 5.0
+autostart = true
+script = ExtResource("1_2q38i")
+
+[connection signal="timeout" from="." to="." method="_on_timeout"]

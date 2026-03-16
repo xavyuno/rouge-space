@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6lkqmonlrb7r"]
+
+[ext_resource type="Script" uid="uid://mhwd7mg0hbv" path="res://Game/Assets/Interface/HUD/hud.gd" id="1_rd5ee"]
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rd5ee")
+
+[node name="Holder" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 128.0
+
+[node name="Coins" type="Label" parent="Holder"]
+layout_mode = 2
+text = "Multiplier: 1"
+
+[node name="Health" type="Label" parent="Holder"]
+layout_mode = 2
+text = "Health: 100"
+
+[node name="Bullets" type="Label" parent="Holder"]
+layout_mode = 2
+text = "Bullets: 100/100"
+
+[node name="Wave" type="Label" parent="Holder"]
+layout_mode = 2
+text = "Wave: 1"
+
+[node name="Mutliplier" type="Label" parent="Holder"]
+layout_mode = 2
+text = "Multiplier: 1"

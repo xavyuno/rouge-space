@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctmiufesx8mnr"]
+
+[ext_resource type="Script" uid="uid://juhcs7om0klo" path="res://Game/Assets/Interface/Upgrade/upgrade_1.gd" id="1_qdsck"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8ni6c"]
+font_color = Color(0.292523, 0.792969, 0.111511, 1)
+
+[node name="Upgrade1" type="Button"]
+size_flags_horizontal = 3
+script = ExtResource("1_qdsck")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -69.0
+offset_right = 69.0
+offset_bottom = 32.0
+grow_horizontal = 2
+text = "Upgrade Name"
+label_settings = SubResource("LabelSettings_8ni6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Info" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 32.0
+offset_bottom = 192.0
+grow_horizontal = 2
+text = "Upgrade Info"
+autowrap_mode = 3
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

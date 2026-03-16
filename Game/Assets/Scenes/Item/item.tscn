@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcu8xot1r4vtn"]
+
+[ext_resource type="Script" uid="uid://4a0kpt2isg44" path="res://Game/Assets/Scenes/Item/item.gd" id="1_uhymv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ky7o8"]
+size = Vector2(32, 32)
+
+[node name="Item" type="Area2D"]
+script = ExtResource("1_uhymv")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ky7o8")
+
+[node name="Icon" type="Polygon2D" parent="."]
+position = Vector2(-16, 16)
+color = Color(0.878906, 0.852889, 0.21286, 1)
+polygon = PackedVector2Array(0, -32, 0, 0, 32, 0, 32, -32)
+
+[node name="Title" type="Label" parent="."]
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+text = "D"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

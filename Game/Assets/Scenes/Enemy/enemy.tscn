@@ -1,0 +1,123 @@
+[gd_scene load_steps=11 format=3 uid="uid://cusowbi1q52ks"]
+
+[ext_resource type="Script" uid="uid://c8pft4njbks38" path="res://Game/Assets/Scenes/Enemy/enemy.gd" id="1_aep0f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4cg5t"]
+size = Vector2(64, 64)
+
+[sub_resource type="Animation" id="Animation_mbc2i"]
+resource_name = "Reload"
+step = 0.1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"Reload"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_110j0"]
+resource_name = "Shoot"
+step = 0.1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"Shoot"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1dyyp"]
+_data = {
+&"Reload": SubResource("Animation_mbc2i"),
+&"Shoot": SubResource("Animation_110j0")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pf4xk"]
+size = Vector2(60, 60)
+
+[sub_resource type="Gradient" id="Gradient_fnap8"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.160985, 0.382813, 0.0807495, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8v5wg"]
+gradient = SubResource("Gradient_fnap8")
+
+[sub_resource type="Gradient" id="Gradient_gshwh"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.28973, 0.679688, 0.148682, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_be7x8"]
+gradient = SubResource("Gradient_gshwh")
+
+[node name="Enemy" type="CharacterBody2D"]
+collision_layer = 2
+motion_mode = 1
+platform_wall_layers = 255
+script = ExtResource("1_aep0f")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_4cg5t")
+
+[node name="Body" type="Polygon2D" parent="."]
+color = Color(0.78125, 0.238037, 0.238037, 1)
+polygon = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+
+[node name="Gun" type="Polygon2D" parent="."]
+color = Color(0.3125, 0.0817871, 0.0817871, 1)
+polygon = PackedVector2Array(0, -8, 64, -8, 64, 9, 0, 9)
+
+[node name="Marker" type="Marker2D" parent="Gun"]
+position = Vector2(64, 0)
+
+[node name="Reload" type="Timer" parent="."]
+
+[node name="DirTimer" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_1dyyp")
+}
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="Collision" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("RectangleShape2D_pf4xk")
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+visible = false
+offset_left = -32.0
+offset_top = -64.0
+offset_right = 32.0
+offset_bottom = -37.0
+nine_patch_stretch = true
+texture_under = SubResource("GradientTexture2D_8v5wg")
+texture_progress = SubResource("GradientTexture2D_be7x8")
+
+[node name="Info" type="Label" parent="HealthBar"]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 32.0
+text = "324"
+horizontal_alignment = 1
+
+[connection signal="timeout" from="DirTimer" to="." method="_on_dir_timer_timeout"]
+[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]

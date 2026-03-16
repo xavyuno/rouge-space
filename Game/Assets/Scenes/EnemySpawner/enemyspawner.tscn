@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://o52faqxkjpp6"]
+
+[ext_resource type="Script" uid="uid://0hs3gb285c30" path="res://Game/Assets/Scenes/EnemySpawner/enemyspawner.gd" id="1_8ivi2"]
+
+[node name="Enemyspawner" type="Node2D"]
+script = ExtResource("1_8ivi2")
+
+[node name="Frame" type="Polygon2D" parent="."]
+color = Color(0.866667, 0.235294, 0.235294, 0.392157)
+polygon = PackedVector2Array(-32, -32, -32, 32, 32, 32, 32, -32)
+
+[node name="Progress" type="Polygon2D" parent="."]
+scale = Vector2(0.03, 0.03)
+color = Color(0.866667, 0.235294, 0.235294, 0.392157)
+polygon = PackedVector2Array(-32, -32, -32, 32, 32, 32, 32, -32)

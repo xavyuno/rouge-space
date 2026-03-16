@@ -1,0 +1,79 @@
+[gd_scene load_steps=5 format=3 uid="uid://cqipsmq1uw344"]
+
+[ext_resource type="Script" uid="uid://v8omc4316wsl" path="res://Game/Assets/Interface/Upgrade/upgrades.gd" id="1_ynl47"]
+[ext_resource type="PackedScene" uid="uid://ctmiufesx8mnr" path="res://Game/Assets/Interface/Upgrade/upgrade_1.tscn" id="2_k0hqa"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7eniq"]
+font_size = 45
+
+[sub_resource type="LabelSettings" id="LabelSettings_ldair"]
+font_size = 20
+
+[node name="Upgrades" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 256.0
+offset_top = 192.0
+offset_right = 960.0
+offset_bottom = 512.0
+script = ExtResource("1_ynl47")
+
+[node name="BG" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 64.0
+text = "Upgrades"
+label_settings = SubResource("LabelSettings_7eniq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Price" type="Label" parent="."]
+layout_mode = 0
+offset_left = 512.0
+offset_right = 704.0
+offset_bottom = 64.0
+text = "Buy: 21"
+label_settings = SubResource("LabelSettings_ldair")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Holder" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 72.0
+offset_right = 504.0
+offset_bottom = 312.0
+
+[node name="Upgrade1" parent="Holder" instance=ExtResource("2_k0hqa")]
+layout_mode = 2
+
+[node name="Upgrade2" parent="Holder" instance=ExtResource("2_k0hqa")]
+layout_mode = 2
+
+[node name="Upgrade3" parent="Holder" instance=ExtResource("2_k0hqa")]
+layout_mode = 2
+
+[node name="UpgradeBuy" parent="." instance=ExtResource("2_k0hqa")]
+layout_mode = 2
+offset_left = 521.0
+offset_top = 72.0
+offset_right = 684.0
+offset_bottom = 312.0
+
+[node name="ReRoll" type="Button" parent="."]
+layout_mode = 0
+offset_top = 320.0
+offset_right = 160.0
+offset_bottom = 352.0
+text = "Re Roll"
+
+[connection signal="pressed" from="ReRoll" to="." method="_on_re_roll_pressed"]
